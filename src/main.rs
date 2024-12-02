@@ -4,13 +4,10 @@ struct Deck {
 }
 
 /**
- * impl means implementation
- * implementation means to add function into struct
- * or what we called class function
+ * Installing external crates
+ * Crates === Packages
  * 
- * fn functionName() -> Self
- * `->` means return type of the method/function
- * `-> Self` means return of the functionName() is Self
+ * cargo add <package name>
  */
 
 impl Deck {
@@ -26,8 +23,7 @@ impl Deck {
                 cards.push(card);
             }
         }
-    
-        // return Deck { cards };
+        
         Deck { cards }
     }
 }
