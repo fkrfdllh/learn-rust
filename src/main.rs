@@ -3,35 +3,36 @@ struct Deck {
     cards: Vec<String>
 }
 
-/*
- * array vs Vector
- * array just using `[]`
- * vector using `vec![]`
+/**
+ * impl means implementation
+ * implementation means to add function into struct
+ * or what we called class function
  * 
- * array is in fixed size
- * vector's size can be dynamic
+ * fn functionName() -> Self
+ * `->` means return type of the method/function
+ * `-> Self` means return of the functionName() is Self
  */
 
-fn main() {
-    let suits  = vec!["Hearts", "Spades", "Diamonds"];
-    let values = vec!["Ace", "Two", "Three"];
+impl Deck {
+    fn new() -> Self {
+        let suits  = vec!["Hearts", "Spades", "Diamonds"];
+        let values = vec!["Ace", "Two", "Three"];
+       
+        let mut cards = vec![];
     
-    /*
-     * let variable = value <-- this is immutable, means that variable can't be reassigned (just like constant variable)
-     * let mut variable = value <-- this variable is mutable, the value can be changed
-     */
-    
-    let mut cards = vec![];
-    
-    for suit in suits {
-        for value in &values {
-            let card = format!("{} of {}", value, suit);
-            cards.push(card);
+        for suit in suits {
+            for value in &values {
+                let card = format!("{} of {}", value, suit);
+                cards.push(card);
+            }
         }
-    }
     
-    // let deck = Deck { cards: cards };
-    let deck = Deck { cards };
+        return Deck { cards };
+    }
+}
+
+fn main() {
+    let deck = Deck::new();
     
     println!("Here's your deck: {:#?}", deck);
 }
