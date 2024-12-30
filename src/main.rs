@@ -31,10 +31,27 @@ fn print_account(account: &Account) {
 }
 
 fn main() {
-    let account = Account::new(1, String::from("me"));
-    let account_ref = &account;
+    let mut account = Account::new(1, String::from("me"));
 
-    print_account(account_ref);
+    /*
+       immutable reference
+       reference that cannot modify the value
+    */
+    let account_immutable_ref = &account;
+    print_account(account_immutable_ref);
+
+    /*
+       mutable reference
+       reference that can modify the value
+       the rules:
+       - mutable reference modify owner value
+       - is only one mutable reference per variable
+       - if there is value changed from the owner after initialization of mutable reference variable there will be an error
+    */
+    let account_mutable_ref = &mut account;
+    account_mutable_ref.balance = 100;
+    account_mutable_ref.holder = String::from("Fikri Fadillah");
+    print_account(account_mutable_ref);
 
     println!("{:#?}", account)
 }
