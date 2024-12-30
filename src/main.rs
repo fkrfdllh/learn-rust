@@ -30,10 +30,13 @@ fn print_account(account: Account) {
     println!("{:#?}", account)
 }
 
-fn main() {
-    let bank = Bank::new();
-    let account = Account::new(1, String::from("Fikri Fadillah"));
+fn print_holder(holder: String) {
+    println!("{}", holder);
+}
 
-    print_account(account);
+fn main() {
+    let account = Account::new(1, String::from("me"));
+
+    print_holder(account.holder);
     print_account(account);
 }
