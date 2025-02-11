@@ -14,6 +14,10 @@ impl Bank {
     fn new() -> Self {
         Bank { accounts: vec![] }
     }
+
+    fn add_account(&mut self, account: Account) {
+        self.accounts.push(account)
+    }
 }
 
 impl Account {
@@ -26,32 +30,15 @@ impl Account {
     }
 }
 
-fn print_account(account: &Account) {
-    println!("{:#?}", account);
-}
-
 fn main() {
-    let mut account = Account::new(1, String::from("me"));
-
     /*
-       immutable reference
-       reference that cannot modify the value
-    */
-    let account_immutable_ref = &account;
-    print_account(account_immutable_ref);
+     * If you wanna put new account into bank's accounts
+     * make sure to set bank to mutable
+     */
+    let mut bank = Bank::new();
+    let account = Account::new(1, String::from("me"));
 
-    /*
-       mutable reference
-       reference that can modify the value
-       the rules:
-       - mutable reference modify owner value
-       - is only one mutable reference per variable
-       - if there is value changed from the owner after initialization of mutable reference variable there will be an error
-    */
-    let account_mutable_ref = &mut account;
-    account_mutable_ref.balance = 100;
-    account_mutable_ref.holder = String::from("Fikri Fadillah");
-    print_account(account_mutable_ref);
+    bank.add_account(account);
 
-    println!("{:#?}", account)
+    println!("{:#?}", bank)
 }
