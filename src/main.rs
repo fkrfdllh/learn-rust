@@ -7,14 +7,24 @@ enum Media {
 
 impl Media {
     fn description(&self) -> String {
-        if let Media::Book { title, author } = self {
-            format!("Book: {} {}", title, author)
-        } else if let Media::Movie { title, author } = self {
-            format!("Movie: {} {}", title, author)
-        } else if let Media::Audiobook { title } = self {
-            format!("Audiobook: {}", title)
-        } else {
-            String::from("Media description")
+        // if let Media::Book { title, author } = self {
+        //     format!("Book: {} {}", title, author)
+        // } else if let Media::Movie { title, author } = self {
+        //     format!("Movie: {} {}", title, author)
+        // } else if let Media::Audiobook { title } = self {
+        //     format!("Audiobook: {}", title)
+        // } else {
+        //     String::from("Media description")
+        // }
+
+        match self {
+            Media::Book { title, author } => {
+                format!("Book: {} {}", title, author)
+            }
+            Media::Movie { title, author } => format!("Movie: {} {}", title, author),
+            Media::Audiobook { title } => {
+                format!("Audiobook: {}", title)
+            }
         }
     }
 }
