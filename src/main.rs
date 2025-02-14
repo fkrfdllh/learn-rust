@@ -5,6 +5,10 @@ enum Media {
     Audiobook { title: String },
 }
 
+impl Media {
+    fn description(&self) {}
+}
+
 fn print_media(media: Media) {
     println!("{:#?}", media);
 }
