@@ -6,7 +6,17 @@ enum Media {
 }
 
 impl Media {
-    fn description(&self) {}
+    fn description(&self) -> String {
+        if let Media::Book { title, author } = self {
+            format!("Book: {} {}", title, author)
+        } else if let Media::Movie { title, author } = self {
+            format!("Movie: {} {}", title, author)
+        } else if let Media::Audiobook { title } = self {
+            format!("Audiobook: {}", title)
+        } else {
+            String::from("Media description")
+        }
+    }
 }
 
 fn print_media(media: Media) {
@@ -25,6 +35,10 @@ fn main() {
         title: String::from("Bad book"),
         author: String::from("Bad book"),
     };
+
+    println!("{}", movie.description());
+    println!("{}", book.description());
+    println!("{}", audiobook.description());
 
     print_media(movie);
     print_media(book);
