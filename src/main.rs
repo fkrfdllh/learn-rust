@@ -1,20 +1,3 @@
-/* Instead of doing this:
-struct Book {
-    title: String,
-    author: String,
-}
-
-struct Movie {
-    title: String,
-    director: String,
-}
-
-struct Audiobook {
-    title: String,
-}
-*/
-
-// Do this:
 #[derive(Debug)]
 enum Media {
     Book { title: String, author: String },
@@ -22,6 +5,24 @@ enum Media {
     Audiobook { title: String },
 }
 
+fn print_media(media: Media) {
+    println!("{:#?}", media);
+}
+
 fn main() {
-    println!("Hello, world!");
+    let audiobook = Media::Audiobook {
+        title: String::from("An audiobook"),
+    };
+    let movie = Media::Movie {
+        title: String::from("Good movie"),
+        author: String::from("Good director"),
+    };
+    let book = Media::Book {
+        title: String::from("Bad book"),
+        author: String::from("Bad book"),
+    };
+
+    print_media(movie);
+    print_media(book);
+    print_media(audiobook);
 }
