@@ -7,25 +7,26 @@ enum Media {
 
 impl Media {
     fn description(&self) -> String {
-        // if let Media::Book { title, author } = self {
-        //     format!("Book: {} {}", title, author)
-        // } else if let Media::Movie { title, author } = self {
-        //     format!("Movie: {} {}", title, author)
-        // } else if let Media::Audiobook { title } = self {
-        //     format!("Audiobook: {}", title)
-        // } else {
-        //     String::from("Media description")
-        // }
-
         match self {
-            Media::Book { title, author } => {
-                format!("Book: {} {}", title, author)
-            }
+            Media::Book { title, author } => format!("Book: {} {}", title, author),
             Media::Movie { title, author } => format!("Movie: {} {}", title, author),
-            Media::Audiobook { title } => {
-                format!("Audiobook: {}", title)
-            }
+            Media::Audiobook { title } => format!("Audiobook: {}", title),
         }
+    }
+}
+
+#[derive(Debug)]
+struct Catalog {
+    items: Vec<Media>,
+}
+
+impl Catalog {
+    fn new() -> Self {
+        Catalog { items: vec![] }
+    }
+
+    fn add(&mut self, media: Media) {
+        self.items.push(media);
     }
 }
 
@@ -46,11 +47,10 @@ fn main() {
         author: String::from("Bad book"),
     };
 
-    println!("{}", movie.description());
-    println!("{}", book.description());
-    println!("{}", audiobook.description());
+    let mut catalog = Catalog::new();
+    catalog.add(audiobook);
+    catalog.add(movie);
+    catalog.add(book);
 
-    print_media(movie);
-    print_media(book);
-    print_media(audiobook);
+    println!("{:#?}", catalog);
 }
