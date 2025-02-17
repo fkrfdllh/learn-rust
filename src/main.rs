@@ -68,8 +68,20 @@ fn main() {
     catalog.add(podcast);
     catalog.add(placeholder);
 
-    match catalog.get_by_index(100) {
-        Some(value) => println!("Item: {:#?}", value),
-        None => println!("No value here"),
-    }
+    let item = catalog.get_by_index(100);
+    let placeholder = Media::Placeholder;
+
+    // Using .unwrap() to debugging
+    // because it only shows Some option
+    // if the value is None then it will panic
+    // println!("{:#?}", item.unwrap());
+
+    // Using .expect will panic too
+    // but this good for testing
+    // because it is returns message inside expect parameter
+    // println!("{:#?}", item.expect("expected there to be an item here"));
+
+    // Using .unwrap_or gonna return Some
+    // if None so it will return what is inside in parameter (fallback value)
+    println!("{:#?}", item.unwrap_or(&placeholder));
 }
