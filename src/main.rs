@@ -1,16 +1,8 @@
-use std::io::Error;
+use std::fs;
 
 fn main() {
-    match divide(5.0, 0.0) {
-        Ok(number) => println!("{}", number),
-        Err(err) => println!("{}", err),
+    match fs::read_to_string("./logs.txt") {
+        Ok(value) => println!("{}", value.len()),
+        Err(message) => println!("failed to read file: {}", message),
     }
-}
-
-fn divide(a: f64, b: f64) -> Result<f64, Error> {
-    if b == 0.0 {
-        return Err(Error::other("can't divide by 0"));
-    }
-
-    return Ok(a / b);
 }
