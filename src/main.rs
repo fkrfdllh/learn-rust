@@ -1,14 +1,16 @@
 use std::fs;
 
 fn main() {
+    let mut errors = vec![];
+
     match fs::read_to_string("./logs.txt") {
         Ok(value) => {
-            let errors = extract_errors(value.as_str());
-
-            println!("{:#?}", errors);
+            errors = extract_errors(value.as_str());
         }
         Err(message) => println!("failed to read file: {}", message),
     }
+
+    println!("{:#?}", errors);
 }
 
 fn extract_errors(text: &str) -> Vec<&str> {
