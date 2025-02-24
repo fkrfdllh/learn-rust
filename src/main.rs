@@ -13,14 +13,14 @@ fn main() {
     println!("{:#?}", errors);
 }
 
-fn extract_errors(text: &str) -> Vec<&str> {
+fn extract_errors(text: &str) -> Vec<String> {
     let splitted_text = text.split("\n");
 
     let mut results = vec![];
 
     for line in splitted_text {
         if line.starts_with("ERROR") {
-            results.push(line);
+            results.push(line.to_string());
         }
     }
 
