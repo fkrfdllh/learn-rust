@@ -1,5 +1,5 @@
 fn main() {
-    let colors = vec![
+    let mut colors = vec![
         String::from("red"),
         String::from("green"),
         String::from("blue"),
@@ -8,7 +8,8 @@ fn main() {
         String::from("black"),
     ];
 
-    print_elements(&colors[1..4]);
+    // print_elements(&colors[1..4]);
+    shorten_strings(&mut colors);
 }
 
 fn print_elements(elements: &[String]) {
@@ -20,4 +21,10 @@ fn print_elements(elements: &[String]) {
         .iter()
         .map(|element| format!("{} {}", element, element))
         .for_each(|element| println!("{}", element));
+}
+
+fn shorten_strings(elements: &mut Vec<String>) {
+    elements
+        .iter_mut()
+        .for_each(|elements| elements.truncate(1));
 }
