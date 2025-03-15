@@ -17,5 +17,8 @@ fn print_elements(elements: &Vec<String>) {
     // }
 
     // pipes (|param|) inside of bracket is anonymous function
+    // elements.iter().for_each(|element| {
+    //     println!("{}", element)
+    // });
     elements.iter().for_each(|element| println!("{}", element));
 }
