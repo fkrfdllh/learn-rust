@@ -12,7 +12,10 @@ fn main() {
 }
 
 fn print_elements(elements: &Vec<String>) {
-    for element in elements {
-        println!("{}", element)
-    }
+    // for element in elements {
+    //     println!("{}", element)
+    // }
+
+    // pipes (|param|) inside of bracket is anonymous function
+    elements.iter().for_each(|element| println!("{}", element));
 }
