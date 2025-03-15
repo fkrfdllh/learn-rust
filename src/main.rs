@@ -16,9 +16,15 @@ fn print_elements(elements: &Vec<String>) {
     //     println!("{}", element)
     // }
 
-    // pipes (|param|) inside of bracket is anonymous function
-    // elements.iter().for_each(|element| {
-    //     println!("{}", element)
-    // });
-    elements.iter().for_each(|element| println!("{}", element));
+    /*
+     * !! TLDR !!
+     * .map() is adaptor of iteration
+     * .for_each() is consumer of iteration
+     * iteration can't ended with adaptor, so it must be ended with consumer
+     * so, if we wanna use adaptor then chain them with consumer
+     */
+    elements
+        .iter()
+        .map(|element| format!("{} {}", element, element))
+        .for_each(|element| println!("{}", element));
 }
