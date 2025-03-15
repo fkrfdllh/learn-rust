@@ -8,21 +8,14 @@ fn main() {
         String::from("black"),
     ];
 
-    print_elements(&colors);
+    print_elements(&colors[1..4]);
 }
 
-fn print_elements(elements: &Vec<String>) {
+fn print_elements(elements: &[String]) {
     // for element in elements {
     //     println!("{}", element)
     // }
 
-    /*
-     * !! TLDR !!
-     * .map() is adaptor of iteration
-     * .for_each() is consumer of iteration
-     * iteration can't ended with adaptor, so it must be ended with consumer
-     * so, if we wanna use adaptor then chain them with consumer
-     */
     elements
         .iter()
         .map(|element| format!("{} {}", element, element))
