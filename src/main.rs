@@ -8,16 +8,11 @@ fn main() {
         String::from("black"),
     ];
 
-    // iter is creating Iter<String> struct that pointing to source data
-    // it means if we wanna pointing to next data of the iterator
-    // then the color_iter will mutate (changing value of the pointer)
-    // to the next value of the iteration
-    let mut colors_iter = colors.iter();
+    print_elements(&colors);
+}
 
-    println!("{:#?}", colors_iter.next());
-    println!("{:#?}", colors_iter.next());
-    println!("{:#?}", colors_iter.next());
-    println!("{:#?}", colors_iter.next());
-    println!("{:#?}", colors_iter.next());
-    println!("{:#?}", colors_iter.next());
+fn print_elements(elements: &Vec<String>) {
+    for element in elements {
+        println!("{}", element)
+    }
 }
