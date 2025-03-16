@@ -16,9 +16,11 @@ fn main() {
 
     // move_elements(colors, &mut dest);
 
-    let exploded = explode(&colors);
+    // let exploded = explode(&colors);
 
-    println!("{:#?}", exploded);
+    let find_one = find_color_or(&colors, "fi", "no color");
+
+    println!("{:#?}", find_one);
 }
 
 fn print_elements(elements: &[String]) {
@@ -56,4 +58,18 @@ fn explode(elements: &[String]) -> Vec<Vec<String>> {
         .iter()
         .map(|element| element.chars().map(|char| char.to_string()).collect())
         .collect();
+}
+
+fn find_color_or(elements: &[String], search: &str, fallback: &str) -> String {
+    // let result = elements.iter().find(|element| element.contains(search));
+
+    // return match result {
+    //     Some(value) => value.to_string(),
+    //     None => fallback.to_string(),
+    // };
+
+    return elements
+        .iter()
+        .find(|element| element.contains(search))
+        .map_or(String::from(fallback), |element| element.to_string());
 }
