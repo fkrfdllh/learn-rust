@@ -12,11 +12,13 @@ fn main() {
     // shorten_strings(&mut colors);
     // let uppercased = to_uppercase(&colors);
 
-    let mut dest = vec![];
+    // let mut dest = vec![];
 
-    move_elements(colors, &mut dest);
+    // move_elements(colors, &mut dest);
 
-    println!("{:#?}", dest);
+    let exploded = explode(&colors);
+
+    println!("{:#?}", exploded);
 }
 
 fn print_elements(elements: &[String]) {
@@ -47,4 +49,11 @@ fn move_elements(source_vec: Vec<String>, dest_vec: &mut Vec<String>) {
     source_vec
         .into_iter()
         .for_each(|element| dest_vec.push(element));
+}
+
+fn explode(elements: &[String]) -> Vec<Vec<String>> {
+    return elements
+        .iter()
+        .map(|element| element.chars().map(|char| char.to_string()).collect())
+        .collect();
 }
