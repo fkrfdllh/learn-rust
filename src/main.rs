@@ -9,7 +9,9 @@ fn main() {
     ];
 
     // print_elements(&colors[1..4]);
-    shorten_strings(&mut colors);
+    // shorten_strings(&mut colors);
+    let uppercased = to_uppercase(&colors);
+    println!("{:#?}", uppercased);
 }
 
 fn print_elements(elements: &[String]) {
@@ -27,4 +29,11 @@ fn shorten_strings(elements: &mut Vec<String>) {
     elements
         .iter_mut()
         .for_each(|elements| elements.truncate(1));
+}
+
+fn to_uppercase(elements: &[String]) -> Vec<String> {
+    return elements
+        .iter()
+        .map(|element| element.to_uppercase())
+        .collect();
 }
