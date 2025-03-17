@@ -8,14 +8,13 @@ fn main() {
         String::from("Python"),
     ];
 
-    let result = next_language(&languages, "Python");
+    let next_language = next_language(&languages, "PHP");
+    let last_language = last_language(&languages);
 
-    println!("{}", result);
+    println!("Next Language: {}", next_language);
+    println!("Last Language: {}", last_language);
 }
 
-// lifetime annotation used to mark
-// the output of the scope gonna use which reference
-// it will use
 fn next_language<'a, 'b>(languages: &'a [String], current: &'b str) -> &'a str {
     let mut found = false;
 
@@ -29,5 +28,9 @@ fn next_language<'a, 'b>(languages: &'a [String], current: &'b str) -> &'a str {
         }
     }
 
+    return languages.last().unwrap();
+}
+
+fn last_language(languages: &[String]) -> &str {
     return languages.last().unwrap();
 }
