@@ -10,9 +10,11 @@ fn main() {
 
     let next_language = next_language(&languages, "PHP");
     let last_language = last_language(&languages);
+    let longest_language = longest_language("typescript", "javascript");
 
     println!("Next Language: {}", next_language);
     println!("Last Language: {}", last_language);
+    println!("Longest Language: {}", longest_language);
 }
 
 fn next_language<'a, 'b>(languages: &'a [String], current: &'b str) -> &'a str {
@@ -33,4 +35,11 @@ fn next_language<'a, 'b>(languages: &'a [String], current: &'b str) -> &'a str {
 
 fn last_language(languages: &[String]) -> &str {
     return languages.last().unwrap();
+}
+fn longest_language<'a>(lang_a: &'a str, lang_b: &'a str) -> &'a str {
+    if lang_a.len() >= lang_b.len() {
+        return lang_a;
+    }
+
+    return lang_b;
 }
