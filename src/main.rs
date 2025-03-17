@@ -1,7 +1,15 @@
+use num_traits::ToPrimitive;
+
 fn main() {
     let a: f32 = 3.0;
-    let b = 4.0;
-    let c = solve(a, b);
+    let b: f64 = 4.0;
+
+    // rust can not do calculation between different data type of number
+
+    // let a_f64 = a as f64;
+    let a_f64 = a.to_f64().unwrap();
+
+    let c = solve(a_f64, b);
 
     println!("result of the pythagorean: {}", c);
 }
